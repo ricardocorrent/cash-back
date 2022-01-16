@@ -14,6 +14,8 @@ class UserDetailsImpl(private val user: User) : UserDetails {
 
     fun getUserId() = user.id
 
+    fun getUserCpf() = user.cpf
+
     override fun isCredentialsNonExpired() = true
 
     override fun getPassword() = user.password

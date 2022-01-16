@@ -49,6 +49,7 @@ class OrderService(
     private fun findUserByCpfOrThrowUserNotFoundException(cpf: String) =
         userRepository.findByCpf(cpf)
             ?: throw UserNotFoundException(cpf)
+                .also { LOGGER.error("The cpf provided don't belong to any user in database") }
 
     private fun handleStatus(entity: Order) {
         val cpfToBeVerified = entity.getUserCpf().justNumbers()

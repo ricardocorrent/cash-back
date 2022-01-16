@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class CashBackService(
-    private val client: CashBackResumeClient
+    private val client: CashBackResumeClient,
 ) {
 
     fun getResume(cpf: String): CashBackResumeDto {
