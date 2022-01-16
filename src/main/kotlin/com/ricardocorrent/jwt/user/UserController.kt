@@ -1,20 +1,28 @@
 package com.ricardocorrent.jwt.user
 
+import com.ricardocorrent.jwt.user.dto.LoginVerifyDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-@RequestMapping("/users")
-class UserController{
+@RequestMapping("/user")
+class UserController {
 
     @Autowired
     private lateinit var userService: UserService
 
-    @GetMapping("/me")
-    fun me() = ResponseEntity.ok(userService.myself()!!)
+    @GetMapping("/verify")
+    fun verify(auth: Authentication) =
+        ResponseEntity.ok(
+            LoginVerifyDto(
+                userName = auth.name,
+                logged = auth.isAuthenticated,
+            )
+        )
 
 }

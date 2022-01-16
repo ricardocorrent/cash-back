@@ -12,4 +12,5 @@ class CashBackService(
     fun getResume(cpf: String): CashBackResumeDto {
         return client.getResume(mapOf("token" to "\${external.cash.back.token}"), cpf)
     }
+
 }

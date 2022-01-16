@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
 
 class UserRequestDto(
+
     @NotNull
     @NotEmpty
     val fullName: String,
@@ -20,4 +21,5 @@ class UserRequestDto(
     @NotNull
     @NotEmpty
     val cpf: String,
+
 )
