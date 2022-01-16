@@ -1,6 +1,5 @@
 package com.ricardocorrent.jwt.order
 
-import com.ricardocorrent.jwt.cashback.CashBack
 import com.ricardocorrent.jwt.cashback.rule.TenPercent
 import com.ricardocorrent.jwt.exception.UserNotFoundException
 import com.ricardocorrent.jwt.user.UserDetailsImpl
@@ -56,7 +55,8 @@ class OrderService(
     private fun handleCashBack(entity: Order) {
         val (percentage, value) = TenPercent.calculateCashBackValue(entity.value)
 
-        entity.cashBack = CashBack(percentage.formatDecimal(), value)
+        entity.cashBackPercentage = percentage.formatDecimal()
+        entity.cashBackValue = value
     }
 
 }

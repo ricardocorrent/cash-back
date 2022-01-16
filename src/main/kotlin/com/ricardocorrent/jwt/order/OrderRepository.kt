@@ -1,10 +1,10 @@
 package com.ricardocorrent.jwt.order
 
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface OrderRepository : JpaRepository<Order, UUID> {
-    fun findAllByUserIdOrderByDateDesc(userId: UUID) : List<Order>?
+interface OrderRepository : MongoRepository<Order, UUID> {
+    fun findAllByUserIdOrderByDateDesc(userId: UUID): List<Order>?
 }

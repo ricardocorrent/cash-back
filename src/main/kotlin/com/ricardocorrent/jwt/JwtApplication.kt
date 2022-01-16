@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.cloud.openfeign.EnableFeignClients
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["com.ricardocorrent.jwt.user.UserRepository"])
 @EnableFeignClients
 class JwtApplication
 

@@ -12,18 +12,11 @@ interface OrderConverter {
         value = [
             Mapping(source = "cpf", target = "user.cpf"),
             Mapping(target = "status", ignore = true),
-            Mapping(target = "cashBack", ignore = true),
         ]
     )
     fun toEntity(source: OrderRequestDto): Order
 
 
-    @Mappings(
-        value = [
-            Mapping(source = "cashBack.cashBackPercentage", target = "cashBackPercentage"),
-            Mapping(source = "cashBack.cashBackValue", target = "cashBackValue"),
-        ]
-    )
     @Named("orderToOrderResponseDto")
     fun toDto(source: Order): OrderResponseDto
 

@@ -1,6 +1,5 @@
 package com.ricardocorrent.jwt.order
 
-import com.ricardocorrent.jwt.cashback.CashBack
 import com.ricardocorrent.jwt.user.User
 import com.ricardocorrent.jwt.user.UserDetailsImpl
 import com.ricardocorrent.jwt.user.UserRepository
@@ -8,9 +7,7 @@ import com.ricardocorrent.jwt.utils.*
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
@@ -66,10 +63,8 @@ internal class OrderServiceUnitTests {
             date = LocalDateTime.now(),
             user = user,
             status = randomOrderStatus,
-            cashBack = CashBack(
-                cashBackPercentage = listOf(10, 15, 20).random().toBigDecimal(),
-                cashBackValue = randomBigDecimalValue,
-            ),
+            cashBackPercentage = listOf(10, 15, 20).random().toBigDecimal(),
+            cashBackValue = randomBigDecimalValue,
         )
 
 }
