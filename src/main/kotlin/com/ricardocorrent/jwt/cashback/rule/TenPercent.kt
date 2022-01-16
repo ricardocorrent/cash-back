@@ -14,7 +14,7 @@ object TenPercent : ICashBack {
 
     override fun calculateCashBackValue(value: BigDecimal) =
         value.takeIf { it <= BigDecimal.valueOf(1000) }
-            ?.let { percentage to it.multiply(FifteenPercent.percentage).scaled() }
+            ?.let { percentage to it.multiply(percentage).scaled() }
             ?: next.calculateCashBackValue(value)
 
 }

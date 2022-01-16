@@ -11,6 +11,11 @@ interface UserConverter {
     @Named("userToUserResponseDto")
     fun toDto(source: User): UserResponseDto
 
+    @Mappings(
+        value = [
+            Mapping(target = "id", ignore = true),
+        ]
+    )
     @Named("userRequestDtoToUser")
     fun toEntity(source: UserRequestDto): User
 

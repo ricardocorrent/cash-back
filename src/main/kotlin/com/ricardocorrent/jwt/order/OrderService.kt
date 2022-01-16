@@ -9,21 +9,27 @@ import com.ricardocorrent.jwt.utils.cpf_approved
 import com.ricardocorrent.jwt.utils.formatDecimal
 import com.ricardocorrent.jwt.utils.isEqTo
 import com.ricardocorrent.jwt.utils.justNumbers
+import org.slf4j.LoggerFactory
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class OrderService(
-    val repository: OrderRepository,
-    val userRepository: UserRepository,
+    private val repository: OrderRepository,
+    private val userRepository: UserRepository,
 ) {
+
+    private companion object {
+        private val LOGGER = LoggerFactory.getLogger(OrderService::class.java)
+    }
 
     fun save(entity: Order): Order {
         entity.id = UUID.randomUUID()
         entity.user = findUserByCpfOrThrowUserNotFoundException(entity.getUserCpf())
         handleStatus(entity)
         handleCashBack(entity)
+
         return repository.save(entity)
     }
 
